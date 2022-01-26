@@ -1,7 +1,11 @@
 <h1>Üldinfo<h1> 
 <h3>For students who want to be updated about school information. The School News Portal is a digital media platform. <h3>
 <br>
-<h3>Roles:<h3>
+<h4>Language: <h4>
+<h4>Database: <h4>
+<h4>Hosting: <h4>
+<h4>CI/CD: <h4>
+<h2>Roles:<h2>
 <h4>Ingela Elizabeth Rohusaar <h4>
 <h4>Magnus Ka<h4> 
 <h4>Allan Leibenau<h4> 
