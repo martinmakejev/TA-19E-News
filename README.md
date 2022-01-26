@@ -10,8 +10,8 @@
 <h4>Ingela Elizabeth Rohusaar - Front-end<h4>
 <h4>Magnus Ka<h4> 
 <h4>Allan Leibenau<h4> 
-<h4>Jan Kängsepp - Hosting<h4> 
-<h4>Martin Makejev<h4> 
-<h4>Artur Allmann<h4> 
-<h4>Sten P<h4> 
+<h4>Jan Kängsepp - Hosting, CI/CD<h4> 
+<h4>Martin Makejev Back-end, DB<h4> 
+<h4>Artur Allmann Back-end, DB<h4> 
+<h4>Sten Parv - Documentation<h4> 
 <h4>Andreas Lepiste<h4> 
