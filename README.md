@@ -7,7 +7,7 @@
 <h4>Back-End: NextJS <h4>
 <h4>CI/CD: <h4>
 <h2>Roles:<h2>
-<h4>Ingela Elizabeth Rohusaar <h4>
+<h4>Ingela Elizabeth Rohusaar - Front-end<h4>
 <h4>Magnus Ka<h4> 
 <h4>Allan Leibenau<h4> 
 <h4>Jan Kängsepp<h4> 
