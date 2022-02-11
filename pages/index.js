@@ -38,6 +38,10 @@ export default function Home() {
             <h2>Title &rarr;</h2>
           </a>
         </div>
+
+        <div>
+          <button onclick="goLogin()">Log In</button>
+        </div>
       </main>
 
       <footer className={styles.footer}>
@@ -53,5 +57,11 @@ export default function Home() {
         </a>
       </footer>
     </div>
+    
   )
+  
 }
+
+<script>
+</script>
+

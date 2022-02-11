@@ -14,5 +14,19 @@
   "devDependencies": {
     "eslint": "8.7.0",
     "eslint-config-next": "^12.0.8"
-  }
+  },
+  "name": "ta-19e-news",
+  "description": "Jou",
+  "version": "1.0.0",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinmakejev/TA-19E-News.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinmakejev/TA-19E-News/issues"
+  },
+  "homepage": "https://github.com/martinmakejev/TA-19E-News#readme"
 }
