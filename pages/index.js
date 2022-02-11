@@ -13,30 +13,14 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="/">News</a>!
+          Welcome to <a href="">News</a>!
         </h1>
 
         <p className={styles.description}>
           News for You!
         </p>
         
-        <div className={styles.grid}>
-          <a className={styles.card}>
-            <h2>Title &rarr;</h2>
-          </a>
-
-          <a  className={styles.card}>
-            <h2>Title &rarr;</h2>
-          </a>
-
-          <a className={styles.card}>
-            <h2>Title &rarr;</h2>
-
-          </a>
-
-          <a className={styles.card}>
-            <h2>Title &rarr;</h2>
-          </a>
+        <div id="newsarray" className={styles.grid}>
         </div>
       </main>
 
@@ -55,3 +39,10 @@ export default function Home() {
     </div>
   )
 }
+/*
+function arraynews(database) {
+  responseObj = readJsonFromUrl(database)
+  const array = JSON.stringify(responseObj)
+}
+Home.getElementById("newsarray") = arraynews("https://placekitten.com/640/360")
+*/
