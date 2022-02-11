@@ -1,6 +1,8 @@
+import { getLocationOrigin } from 'next/dist/shared/lib/utils'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Login from './login-panel'
 
 export default function Home() {
   return (
@@ -40,7 +42,7 @@ export default function Home() {
         </div>
 
         <div>
-          <button onclick="goLogin()">Log In</button>
+          <button onClick={()=>{window.location.href="/login-panel"}}>Log In</button>
         </div>
       </main>
 
@@ -61,7 +63,3 @@ export default function Home() {
   )
   
 }
-
-<script>
-</script>
-
