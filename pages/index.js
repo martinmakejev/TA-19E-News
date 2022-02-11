@@ -1,8 +1,16 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  //const [content, setContent] = useState([]);
+  const content = [{title: "Cat1", src:"pages/placeholder.jpeg"},{title: "Cat2", src:"placeholder.jpg"},{title: "Cat3", src:"placeholder.jpg"}]
+
+  /*useEffect(function() {
+    fetch("").then(res => res.json()).then(data => setContent(data))
+  }, []) */
+
   return (
     <div className={styles.container}>
       <Head>
@@ -21,6 +29,12 @@ export default function Home() {
         </p>
         
         <div id="newsarray" className={styles.grid}>
+          {content.map(image => (
+            <div>
+              <h2>{image.title}</h2>
+              <img src="placeholder.jpg" />
+            </div>
+          ))}
         </div>
       </main>
 
@@ -39,10 +53,3 @@ export default function Home() {
     </div>
   )
 }
-/*
-function arraynews(database) {
-  responseObj = readJsonFromUrl(database)
-  const array = JSON.stringify(responseObj)
-}
-Home.getElementById("newsarray") = arraynews("https://placekitten.com/640/360")
-*/
