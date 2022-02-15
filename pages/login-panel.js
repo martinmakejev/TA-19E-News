@@ -15,7 +15,27 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    SQLForm(email, password)
   }
+
+  function SQLForm(theemail, thepassword) {
+    const axios = require('axios');
+    axios.get('https://news.webhosting.tptlive.ee/', {
+      params: {
+        email:theemail,
+        password:thepassword
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+  }
+
 
   return (
     <div className="Login">
@@ -40,6 +60,7 @@ export default function Login() {
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>
+        
       </Form>
     </div>
   );
