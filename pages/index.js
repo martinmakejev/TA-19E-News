@@ -1,7 +1,9 @@
+import { getLocationOrigin } from 'next/dist/shared/lib/utils'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
+import Login from './login-panel'
 
 export default function Home() {
   //const [content, setContent] = useState([]);
@@ -36,6 +38,10 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        <div>
+          <button onClick={()=>{window.location.href="/login-panel"}}>Log In</button>
+        </div>
       </main>
 
       <footer className={styles.footer}>
@@ -51,5 +57,7 @@ export default function Home() {
         </a>
       </footer>
     </div>
+    
   )
+  
 }
