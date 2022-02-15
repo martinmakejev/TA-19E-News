@@ -1,4 +1,4 @@
-<h1>Üldinfo<h1> 
+<h1>General information<h1> 
 <h3>For students who want to be updated about school information. The School News Portal is a digital media platform. <h3>
 <br>
 <h4>Front-end: React<h4>
@@ -6,7 +6,7 @@
 <h4>Hosting: <h4>
 <h4>Back-End: NextJS <h4>
 <h4>CI/CD: <h4>
-<h2>Roles (26.01 Seisuga):<h2>
+<h2>Roles (26.01):<h2>
 <h4>Ingela Elizabeth Rohusaar - Draw mockups of public screens<h4>
 <h4>Magnus Kaunismäe - Draw mockups for news admin screens<h4> 
 <h4>Allan Leibenau - Write inital functional requirements to News<h4> 
