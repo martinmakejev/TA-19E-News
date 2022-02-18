@@ -14,8 +14,8 @@ export default function Login() {
   }
 
   function handleSubmit(event) {
-    document.getElementById('post').enctype = 'multipart/form-data';
     event.preventDefault();
+    const formData = new FormData(this);
   }
 
   return (
