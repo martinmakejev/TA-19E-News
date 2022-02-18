@@ -15,7 +15,21 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    SQLForm(email, password)
+
+    fetch('/api/v1/login', {
+      method: 'post',
+      body: JSON.stringify({
+        email,
+        password,
+      })
+
+    }).then(function(response){
+      return response.json();
+    }).then(function(userData){
+      console.log(userData);
+    }).catch(function(error){
+      console.error(error);
+    })
   }
 
   function SQLForm(theemail, thepassword) {
