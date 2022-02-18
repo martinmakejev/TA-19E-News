@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^12.0.8",
+    "react": "17.0.2",
+    "react-bootstrap": "^2.1.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "eslint": "8.7.0",
+    "eslint-config-next": "^12.0.8"
+  },
+  "name": "ta-19e-news",
+  "description": "Jou",
+  "version": "1.0.0",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinmakejev/TA-19E-News.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinmakejev/TA-19E-News/issues"
+  },
+  "homepage": "https://github.com/martinmakejev/TA-19E-News#readme"
+}
