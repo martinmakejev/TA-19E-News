@@ -18,6 +18,7 @@ export default function Login() {
 
     fetch('/api/v1/login', {
       method: 'post',
+      headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
         email,
         password,
@@ -27,26 +28,13 @@ export default function Login() {
       return response.json();
     }).then(function(userData){
       console.log(userData);
+      if (userData.success) {
+        // TODO redirect to new list...
+      } else {
+        // TODO setError(userData.message)
+      }
     }).catch(function(error){
       console.error(error);
-    })
-  }
-
-  function SQLForm(theemail, thepassword) {
-    const axios = require('axios');
-    axios.get('https://news.webhosting.tptlive.ee/', {
-      params: {
-        email:theemail,
-        password:thepassword
-      }
-    })
-    .then(function (response) {
-      console.log(response);
-
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
     })
   }
 
