@@ -15,15 +15,17 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData(this);
-    fetch('login.php', {
+    fetch('/api/v1/login', {
       method: 'post',
-      body: formData
+      body: JSON.stringify({
+        email,
+        password,
+      })
 
     }).then(function(response){
-      return response.text();
-    }).then(function(text){
-      console.log(text);
+      return response.json();
+    }).then(function(userData){
+      console.log(userData);
     }).catch(function(error){
       console.error(error);
     })
