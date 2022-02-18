@@ -15,6 +15,7 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     fetch('/api/v1/login', {
       method: 'post',
       body: JSON.stringify({
@@ -30,6 +31,25 @@ export default function Login() {
       console.error(error);
     })
   }
+
+  function SQLForm(theemail, thepassword) {
+    const axios = require('axios');
+    axios.get('https://news.webhosting.tptlive.ee/', {
+      params: {
+        email:theemail,
+        password:thepassword
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+  }
+
 
   return (
     <div className="Login">
@@ -54,6 +74,7 @@ export default function Login() {
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>
+        
       </Form>
     </div>
   );
