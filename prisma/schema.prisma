@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:Passw0rd@localhost:3306"
+  url      = env("DATABASE_URL")
 }
 
 model user {
@@ -17,14 +17,33 @@ model user {
 
 model news {
   id  Int       @id @default(autoincrement())
-  school_id Int 
-  class_id  Int?
+  school school @relation(fields: [school_id], references:[id])
+  school_id Int
+  class classes @relation(fields: [class_id], references:[id])
+  class_id  Int
   news_title  String
   author_name String
   news_content  String
   news_images   String
   release_date  DateTime
-  comment_id  Int
-  
+  comment_id Int
+  comment comment[]
+}
 
+model comment {
+  id Int @id @default(autoincrement())
+  content String
+  author String
+  date DateTime
+  news news @relation(fields: [id], references: [comment_id])
+}
+
+model school {
+  id Int @id @default(autoincrement())
+  news news[]
+}
+
+model classes {
+  id Int @id @default(autoincrement())
+  news news[]
 }
