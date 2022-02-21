@@ -27,15 +27,16 @@ model news {
   news_images   String
   release_date  DateTime
   comment_id Int
-  comment comment[]
+  //comment comment[]
 }
 
 model comment {
+  //news news @relation(fields: [id], references: [comment_id])
   id Int @id @default(autoincrement())
   content String
   author String
   date DateTime
-  news news @relation(fields: [id], references: [comment_id])
+  
 }
 
 model school {

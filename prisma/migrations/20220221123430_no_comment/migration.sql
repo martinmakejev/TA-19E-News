@@ -54,6 +54,3 @@ ALTER TABLE `news` ADD CONSTRAINT `news_school_id_fkey` FOREIGN KEY (`school_id`
 
 -- AddForeignKey
 ALTER TABLE `news` ADD CONSTRAINT `news_class_id_fkey` FOREIGN KEY (`class_id`) REFERENCES `classes`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `comment` ADD CONSTRAINT `comment_id_fkey` FOREIGN KEY (`id`) REFERENCES `news`(`comment_id`) ON DELETE RESTRICT ON UPDATE CASCADE;
