@@ -1,13 +1,25 @@
-import { getLocationOrigin } from 'next/dist/shared/lib/utils'
-import Head from 'next/head'
-import Image from 'next/image'
-import { useEffect } from 'react'
-import styles from '../styles/Home.module.css'
-import Login from './login-panel'
+import { PrismaClient } from "@prisma/client";
+import { getLocationOrigin } from "next/dist/shared/lib/utils";
+import Head from "next/head";
+import Image from "next/image";
+import { useEffect } from "react";
+import styles from "../styles/Home.module.css";
+import Login from "./login-panel";
+import prisma from "../prisma/seed";
 
 export default function Home() {
   //const [content, setContent] = useState([]);
-  const content = [{title: "Cat1", src:"pages/placeholder.jpeg"},{title: "Cat2", src:"placeholder.jpg"},{title: "Cat3", src:"placeholder.jpg"}]
+  const news = [
+    { title: content1.title, content: content1.content },
+    { title: "Cat2", src: "placeholder.jpg" },
+    { title: "Cat3", src: "placeholder.jpg" },
+  ];
+
+  const content1 = prisma.news.findMany({
+    where: { id: 1 },
+    select: title,
+    content,
+  });
 
   /*useEffect(function() {
     fetch("").then(res => res.json()).then(data => setContent(data))
@@ -26,21 +38,26 @@ export default function Home() {
           Welcome to <a href="">News</a>!
         </h1>
 
-        <p className={styles.description}>
-          News for You!
-        </p>
-        
+        <p className={styles.description}>News for You!</p>
+
         <div id="newsarray" className={styles.grid}>
-          {content.map(image => (
+          {content.map((image) => (
+            // eslint-disable-next-line react/jsx-key
             <div>
-              <h2>{image.title}</h2>
-              <img src="placeholder.jpg" />
+              <h2>{title}</h2>
+              <p>{content}</p>
             </div>
           ))}
         </div>
 
         <div>
-          <button onClick={()=>{window.location.href="/login-panel"}}>Log In</button>
+          <button
+            onClick={() => {
+              window.location.href = "/login-panel";
+            }}
+          >
+            Log In
+          </button>
         </div>
       </main>
 
@@ -50,14 +67,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-    
-  )
-  
+  );
 }

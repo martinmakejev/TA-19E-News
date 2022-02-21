@@ -28,6 +28,7 @@ model news {
   release_date  DateTime
   comment_id Int
   //comment comment[]
+
 }
 
 model comment {
