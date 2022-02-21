@@ -17,8 +17,8 @@ export default function Home() {
 
   const content1 = prisma.news.findMany({
     where: { id: 1 },
-    select: title,
-    content,
+    select: news_title,
+    news_content,
   });
 
   /*useEffect(function() {
