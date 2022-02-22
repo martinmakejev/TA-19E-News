@@ -1,31 +1,44 @@
-import { PrismaClient } from "@prisma/client";
+import {PrismaClient} from "@prisma/client"
+export {PrismaClient} from "@prisma/client"
 import { getLocationOrigin } from "next/dist/shared/lib/utils";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Login from "./login-panel";
-import prisma from "../prisma/seed";
+// import prisma from "../prisma/seed";
+export async function getStaticProps () {
 
-export default function Home() {
+const prisma = new PrismaClient()
+const content = prisma.news.findMany()
+      return{
+        props: {content}
+      }
+}
+
+export default function Home({content}) {
+  
   //const [content, setContent] = useState([]);
-  const news = [
-    { title: content1.title, content: content1.content },
-    { title: "Cat2", src: "placeholder.jpg" },
-    { title: "Cat3", src: "placeholder.jpg" },
-  ];
+  <div>
+  {content.map(news=>(
+              <h2>{content.news_title}</h2>
+              <p>{content.news_content}</p>
+                ))}
+                </div>
+  // const news = [
+  //   { title: content1.news_title, content: content1.news_content },
+  //   { title: "Cat2", src: "placeholder.jpg" },
+  //   { title: "Cat3", src: "placeholder.jpg" },
+  // ];
 
-  const content1 = prisma.news.findMany({
-    where: { id: 1 },
-    select: news_title,
-    news_content,
-  });
+  
 
   /*useEffect(function() {
     fetch("").then(res => res.json()).then(data => setContent(data))
   }, []) */
 
   return (
+    
     <div className={styles.container}>
       <Head>
         <title>News</title>
@@ -41,13 +54,13 @@ export default function Home() {
         <p className={styles.description}>News for You!</p>
 
         <div id="newsarray" className={styles.grid}>
-          {content.map((image) => (
-            // eslint-disable-next-line react/jsx-key
+          {/* {content.map((image) => ( */}
+            
             <div>
-              <h2>{title}</h2>
-              <p>{content}</p>
+              <h2>{news.news_title}</h2>
+              <p>{news.news_content}</p>
             </div>
-          ))}
+          {/* ))} */}
         </div>
 
         <div>
