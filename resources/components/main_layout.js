@@ -20,7 +20,9 @@ export default function MainLayout(){
                             <Button onClick={()=>{window.location.href="/login-panel"}}>Log In</Button>
                         </Col>
                         <Col span={6}>
-                            <Search placeholder="Otsi" style={{ width: 200 }} />
+                            <Space direction="vertical">
+                                <Search placeholder="Otsi" style={{ width: 200 }} />
+                            </Space>
                         </Col>
                     </Row>
                 </Header>
