@@ -1,4 +1,4 @@
-import { Layout, Menu, Button, Space, Input, Row, Col } from 'antd';
+import { Layout, Menu, Button, Space, Input, Row, Col, PageHeader } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 const { Search } = Input;
@@ -8,23 +8,15 @@ export default function MainLayout(){
         <div>
             <Layout className="layout" style={{backgroundColor:'white'}}>
                 <Header style={{ backgroundColor: 'white'}}>
-                    <Row>
-                        <Col span={6}>
-                            <div className="logo"/>
-                        </Col>
-                        <Col span={6}>
-                            <Menu>
-                            </Menu>
-                        </Col>
-                        <Col span={6}>
-                            <Button onClick={()=>{window.location.href="/login-panel"}}>Log In</Button>
-                        </Col>
-                        <Col span={6}>
-                            <Space direction="vertical">
-                                <Search placeholder="Otsi" style={{ width: 200 }} />
-                            </Space>
-                        </Col>
-                    </Row>
+                    <PageHeader
+                        ghost={false}
+                        title="News"
+                        //subTitle=""
+                        extra={[
+                            <Button onClick={() => { window.location.href = "/login-panel" }}>Logi sisse</Button>,
+                            <Search placeholder="Otsi" style={{ width: 200 }} />
+                        ]}
+                    ></PageHeader>
                 </Header>
                 <Content style={{ padding: '0 50px' }}>
                     <div className="site-layout-content">
