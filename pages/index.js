@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-export { PrismaClient } from "@prisma/client";
 import { getLocationOrigin } from "next/dist/shared/lib/utils";
 import Head from "next/head";
 import Image from "next/image";
@@ -7,12 +6,17 @@ import { useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Login from "./login-panel";
 // import prisma from "../prisma/seed";
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const prisma = new PrismaClient();
-  const content = prisma.news.findMany();
-  content.json();
+  let content = await prisma.news.findMany({});
+  for (const n of content) {
+    n.release_date = n.release_date.toString();
+  }
+  console.log(content);
   return {
-    props: { content },
+    props: {
+      content,
+    },
   };
 }
 
