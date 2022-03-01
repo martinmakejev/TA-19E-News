@@ -1,25 +1,30 @@
 import React, { useState } from "react";
-import Head from 'next/head'
 import ReactDOM, { render } from 'react-dom';
-import { Image } from 'antd';
-import styles from '../styles/boxes.module.css'
+import '../styles/boxes.module.css';
+
+//logo header
+//nav content
+//footer
 
 export default function newsboxes() {
     return (
-        <div className={styles.container.fluid}>
-            <Head>
-                <title>News</title>
-            </Head>
+        <div classname="container">
+            <div className="mainNews">
+                <h2>Lorem ipsum</h2>
 
-            <div className={styles.main.news}>
-                <h2 className={styles.main.title}>Lorem ipsum</h2>
-                <Image></Image>
-                <p className={styles.main.content}>"Lorem ipsum dolor sit amet,
-                 consectetur adipiscing elit, sed do eiusmod tempor 
-                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-                 consequat.</p>
+                <p>asadfdshfjsdajfhksdfjksdhfuisadjfsda</p>
             </div>
+            <div className="news">Lorem ipsum</div>
+            <div className="news1">Lorem ipsum</div>
+            <div className="news2">Lorem ipsum</div>
+            <div className="news3">Lorem ipsum</div>
+            <div className="news4">Lorem ipsum</div>
+            <div className="news5">Lorem ipsum</div>
+            <div className="news6">Lorem ipsum</div>
+            <div className="news7">Lorem ipsum</div>
+            <div className="news8">Lorem ipsum</div>
+            <div className="news9">Lorem ipsum</div>
+
         </div>
     );
 }
