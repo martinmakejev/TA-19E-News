@@ -1,0 +1,12 @@
+.container.fluid {
+    padding: 10px;
+    margin: auto;
+    width: 50px;
+
+}
+
+.main.news {
+    margin: 50%;
+    text-align: center;
+}
+
