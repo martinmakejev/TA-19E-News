@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\pages"
+    "\\pages",
+    "\\resources",
+    "\\resources\\components"
   ],
-  "SelectedNode": "\\pages\\index.js",
+  "SelectedNode": "\\resources\\components\\main_layout.js",
   "PreviewInSolutionExplorer": false
 }
