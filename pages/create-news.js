@@ -46,7 +46,7 @@ export default function create_news() {
         >
         <Form.Item
             label="Title"
-            name="username"
+            name="title"
             rules={[
             {
                 required: true,
