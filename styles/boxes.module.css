@@ -9,53 +9,53 @@
 }
 
 .mainNews {
-    background-color: gray;
+    background-color: white;
     padding: 50px;
     text-align: center;
     grid-column: 2 / span 2;
     grid-row: 1 / span 5;
-    border: 5px solid black;
+    border: 2px solid black;
     border-radius: 5px;
 }
 
 .news {
-    background-color: gray;
-    height: 300px;
+    background-color: white;
+    height: 350px;
     padding: 50px;
     text-align: center;
     grid-column: 4;
     grid-row: 1 / span 1;
-    border: 5px solid black;
+    border: 2px solid black;
     border-radius: 5px;
 }
 
 .news1 {
-    background-color: gray;
-    height: 300px;
+    background-color: white;
+    height: 350px;
     padding: 50px;
     text-align: center;
     grid-column: 4;
     grid-row: 4 / span 2;
-    border: 5px solid black;
+    border: 2px solid black;
     border-radius: 5px;
 }
 
 .news2 {
-    background-color: gray;
+    background-color: white;
     height: 400px;
     padding: 50px;
     text-align: center;
     grid-column: 2 / span 1;
-    border: 5px solid black;
+    border: 2px solid black;
     border-radius: 5px;
 }
 
 .news3 {
-    background-color: gray;
+    background-color: white;
     height: 400px;
     padding: 50px;
     text-align: center;
     grid-column: 4;
-    border: 5px solid black;
+    border: 2px solid black;
     border-radius: 5px;
 }
