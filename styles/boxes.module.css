@@ -19,8 +19,9 @@
 }
 
 .news {
-    background-color: white;
-    height: 350px;
+
+    
+    height: 300px;
     padding: 50px;
     text-align: center;
     grid-column: 4;
