@@ -11,6 +11,7 @@
 .mainNews {
     background-color: gray;
     padding: 50px;
+    text-align: center;
     grid-column: 2 / span 2;
     grid-row: 1 / span 5;
     border: 5px solid black;
@@ -21,6 +22,7 @@
     background-color: gray;
     height: 300px;
     padding: 50px;
+    text-align: center;
     grid-column: 4;
     grid-row: 1 / span 1;
     border: 5px solid black;
@@ -31,6 +33,7 @@
     background-color: gray;
     height: 300px;
     padding: 50px;
+    text-align: center;
     grid-column: 4;
     grid-row: 4 / span 2;
     border: 5px solid black;
@@ -41,6 +44,7 @@
     background-color: gray;
     height: 400px;
     padding: 50px;
+    text-align: center;
     grid-column: 2 / span 1;
     border: 5px solid black;
     border-radius: 5px;
@@ -50,6 +54,7 @@
     background-color: gray;
     height: 400px;
     padding: 50px;
+    text-align: center;
     grid-column: 4;
     border: 5px solid black;
     border-radius: 5px;
