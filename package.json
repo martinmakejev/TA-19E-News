@@ -10,7 +10,14 @@
     "seed": "node prisma/seed.js"
   },
   "dependencies": {
+<<<<<<< Updated upstream
 
+=======
+<<<<<<< Updated upstream
+=======
+    "@prisma/client": "^3.10.0",
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     "antd": "^4.18.8",
     "axios": "^0.26.0",
     "mysql": "^2.18.1",
