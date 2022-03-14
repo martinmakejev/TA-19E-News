@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +16,29 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    fetch('/api/v1/login', {
+      method: 'post',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        email,
+        password,
+      })
+
+    }).then(function(response){
+      return response.json();
+    }).then(function(userData){
+      console.log(userData);
+      if (userData.success) {
+        // TODO redirect to new list...
+      } else {
+        // TODO setError(userData.message)
+      }
+    }).catch(function(error){
+      console.error(error);
+    })
   }
+
 
   return (
     <div className="Login">
@@ -40,6 +63,7 @@ export default function Login() {
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>
+        
       </Form>
     </div>
   );

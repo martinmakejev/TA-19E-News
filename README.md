@@ -16,3 +16,4 @@ running "npx prisma db seed" will seed data to the prisma database.<br>
 (optional) running "npx prisma studio" will open a web page of the database with its containing data.<br>
 ## step 4: running localhost
 run "npm run dev" to start localhost server at http://localhost:3000
+

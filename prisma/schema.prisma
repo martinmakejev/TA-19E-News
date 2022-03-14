@@ -50,3 +50,4 @@ model classes {
   id Int @id @default(autoincrement())
   news news[]
 }
+
