@@ -56,13 +56,13 @@ export default function create_news() {
         >
             <Input />
         </Form.Item>
-        <Form.Item label="Select">
+        <Form.Item label="Class">
             <Select>
                 <Select.Option value="demo">Demo</Select.Option>
             </Select>
         </Form.Item>
 
-        <Form.Item label="Select">
+        <Form.Item label="School">
             <Select>
                 <Select.Option value="demo">Demo</Select.Option>
             </Select>
