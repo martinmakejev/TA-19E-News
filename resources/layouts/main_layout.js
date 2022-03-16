@@ -19,13 +19,13 @@ export default function MainLayout(){
                         ]}
                     ></PageHeader>
                 </Header>
-                <Content>
-                    <div className="site-layout-content">
-                        <div>
-                            <Newsboxes/>
+                    <Content>
+                        <div className="site-layout-content">
+                            <div>
+                                <Newsboxes/>
+                            </div>
                         </div>
-                    </div>
-                </Content>
+                    </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
             </Layout>
         </div>
