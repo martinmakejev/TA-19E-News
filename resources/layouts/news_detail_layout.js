@@ -1,9 +1,10 @@
 import Image from "next/image"
+import styles from '../../styles/boxes.module.css'
 
 
 export default function DetailLayout(){
     return(
-        <div>
+        <div className={styles.container_middle}>
             <h1></h1>
             <Image
                 src={"/../public/placeholder.jpg"}
