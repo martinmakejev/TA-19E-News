@@ -1,5 +1,5 @@
-import { Layout, Menu, Button, Space, Input, Row, Col, PageHeader } from 'antd';
-import Newsboxes from '../../pages/newsboxes'
+import { Layout, Button, Input, PageHeader } from 'antd';
+import Newsboxes from '../components/newsboxes'
 
 const { Header, Content, Footer } = Layout;
 const { Search } = Input;
@@ -7,7 +7,7 @@ const { Search } = Input;
 export default function MainLayout(){
     return(
         <div>
-            <Layout className="layout" style={{backgroundColor:'white'}}>
+            <Layout className="layout" style={{backgroundColor: "white" }}>
                 <Header style={{ backgroundColor: 'white'}}>
                     <PageHeader
                         ghost={false}
