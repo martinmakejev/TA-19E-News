@@ -1,3 +1,10 @@
+.container_middle{
+    background-color: white;
+    width: 100vw;
+    gap: 30px;
+    margin: 30px;
+}
+
 .container {
     background-color: white;
     width: 100vw;
