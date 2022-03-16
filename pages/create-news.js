@@ -56,13 +56,23 @@ export default function create_news() {
         >
             <Input />
         </Form.Item>
-        <Form.Item label="Class">
+        <Form.Item label="Class" name="selectclass" rules={[
+            {
+                required: true,
+                message: "choose",
+            },
+            ]}>
             <Select>
                 <Select.Option value="demo">Demo</Select.Option>
             </Select>
         </Form.Item>
 
-        <Form.Item label="School">
+        <Form.Item label="School" name="selectschool" rules={[
+            {
+                required: true,
+                message: "choose",
+            },
+            ]}>
             <Select>
                 <Select.Option value="demo">Demo</Select.Option>
             </Select>
