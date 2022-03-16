@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from '../styles/boxes.module.css'
-
 import Image from 'next/image'
 import "antd/dist/antd.css";
 
