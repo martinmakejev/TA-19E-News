@@ -5,8 +5,7 @@ import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import Login from './login-panel'
 import { handler } from "./api/v1/login"
-import Navbar from '../resources/components/main_layout'
-import MainLayout from '../resources/components/main_layout'
+import MainLayout from '../resources/layouts/main_layout'
 
 
 
