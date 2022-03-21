@@ -10,7 +10,7 @@
     "seed": "node prisma/seed.js"
   },
   "dependencies": {
-    "@prisma/client": "^3.10.0",
+    "@prisma/client": "^3.11.0",
     "antd": "^4.19.3",
     "axios": "^0.26.0",
     "mysql": "^2.18.1",
