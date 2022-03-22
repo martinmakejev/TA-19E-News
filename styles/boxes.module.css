@@ -1,4 +1,10 @@
-.container {
+.container{
+    background-color: white;
+    margin: 0 auto;
+    max-width: 75%;
+}
+
+.grid {
     background-color: white;
     width: 100vw;
     display: grid;
