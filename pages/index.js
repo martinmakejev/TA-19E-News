@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Login from "./login-panel";
-// import prisma from "../prisma/seed";
+//import MainLayout from '../resources/layouts/main_layout'
 export async function getServerSideProps() {
   const prisma = new PrismaClient();
   let content = await prisma.news.findMany({});
@@ -20,24 +20,8 @@ export async function getServerSideProps() {
   };
 }
 
+
 export default function Home({ content }) {
-  //const [content, setContent] = useState([]);
-  // <div>
-  // {content.map(news=>(
-  //             <h2>{content.news_title}</h2>
-  //             <p>{content.news_content}</p>
-  //               ))}
-  //               </div>
-  // const news = [
-  //   { title: content1.news_title, content: content1.news_content },
-  //   { title: "Cat2", src: "placeholder.jpg" },
-  //   { title: "Cat3", src: "placeholder.jpg" },
-  // ];
-
-  /*useEffect(function() {
-    fetch("").then(res => res.json()).then(data => setContent(data))
-  }, []) */
-
   return (
     <div className={styles.container}>
       <Head>
