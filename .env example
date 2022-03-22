@@ -7,3 +7,4 @@
 # See the documentation for all the connection string options: https://pris.ly/d/connection-strings
 
 DATABASE_URL="mysql://johndoe:mypassword@localhost:5432/mydb?schema=user"
+SHADOW_DATABASE_URL="mysql://johndoe:mypassword@localhost:5432/mydb?schema=user"

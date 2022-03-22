@@ -17,10 +17,10 @@ async function main() {
         create: { },
       },
       // class_id: 2,
-      news_title: "uudis1",
-      author_name: "Sten Sten Sten",
+      news_title: "uudis2",
+      author_name: "artur Artur artur",
       news_content:
-        "Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten Sten ",
+        "artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur ",
       news_images: "lol.png",
       release_date: new Date(),
     },

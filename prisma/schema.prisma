@@ -1,53 +1,58 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("SHADOW_DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 model user {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String
-  password  String
-  role  String
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  name     String
+  password String
+  role     String
 }
 
 model news {
-  id  Int       @id @default(autoincrement())
-  school school @relation(fields: [school_id], references:[id])
-  school_id Int
-  class classes @relation(fields: [class_id], references:[id])
-  class_id  Int
-  news_title  String
-  author_name String
-  news_content  String
-  news_images   String
-  release_date  DateTime
+  id           Int       @id @default(autoincrement())
+  school       school    @relation(fields: [school_id], references: [id])
+  school_id    Int
+  class        classes   @relation(fields: [class_id], references: [id])
+  class_id     Int
+  news_title   String
+  author_name  String
+  news_content String
+  news_images  String
+  release_date DateTime
   // comment_id Int
-  comment comment[]
+  comment      comment[]
 
+  @@index([school_id])
+  @@index([class_id])
 }
 
 model comment {
-  news news @relation(fields: [news_id], references: [id])
-  id Int @id @default(autoincrement())
+  news    news     @relation(fields: [news_id], references: [id])
+  id      Int      @id @default(autoincrement())
   content String
-  author String
-  date DateTime
+  author  String
+  date    DateTime
   news_id Int
-  
+
+  @@index([news_id])
 }
 
 model school {
-  id Int @id @default(autoincrement())
+  id   Int    @id @default(autoincrement())
   news news[]
 }
 
 model classes {
-  id Int @id @default(autoincrement())
+  id   Int    @id @default(autoincrement())
   news news[]
 }
-
