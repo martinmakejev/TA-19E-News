@@ -1,20 +1,17 @@
-const { PrismaClient } = require('@prisma/client')
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 async function main() {
   const news1 = await prisma.news.upsert({
-    where: { id:1 },
+    where: { id: 1 },
     update: {},
     create: {
-  
       school: {
-        create:{
-
-        },
+        create: {},
       },
       // school_id: 1,
       class: {
-        create: { },
+        create: {},
       },
       // class_id: 2,
       news_title: "uudis2",
