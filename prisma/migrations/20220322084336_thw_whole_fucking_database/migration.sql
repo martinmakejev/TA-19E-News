@@ -21,6 +21,8 @@ CREATE TABLE `news` (
     `news_images` VARCHAR(191) NOT NULL,
     `release_date` DATETIME(3) NOT NULL,
 
+    INDEX `news_school_id_idx`(`school_id`),
+    INDEX `news_class_id_idx`(`class_id`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -32,6 +34,7 @@ CREATE TABLE `comment` (
     `date` DATETIME(3) NOT NULL,
     `news_id` INTEGER NOT NULL,
 
+    INDEX `comment_news_id_idx`(`news_id`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -48,12 +51,3 @@ CREATE TABLE `classes` (
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- AddForeignKey
-ALTER TABLE `news` ADD CONSTRAINT `news_school_id_fkey` FOREIGN KEY (`school_id`) REFERENCES `school`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `news` ADD CONSTRAINT `news_class_id_fkey` FOREIGN KEY (`class_id`) REFERENCES `classes`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `comment` ADD CONSTRAINT `comment_news_id_fkey` FOREIGN KEY (`news_id`) REFERENCES `news`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
