@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import styles from '../../styles/boxes.module.css'
 import Image from 'next/image'
 import "antd/dist/antd.css";
-
+import { PrismaClient } from "@prisma/client";
+export { PrismaClient } from "@prisma/client";
 //logo header
 //nav content
 //footer
+export async function getStaticProps() {
+  const prisma = new PrismaClient();
+  const content = prisma.news.findMany();
+  content.json();
+  return {
+    props: { content },
+  };
+}
 
 function newsboxes() {
     return (
