@@ -1,24 +1,16 @@
-import { Layout, Button, Input, PageHeader } from 'antd';
+import { Layout} from 'antd';
 import Newsboxes from '../components/newsboxes'
+import Footer from '../components/footer'
+import Header from '../components/header'
+import styles from '../../styles/boxes.module.css'
 
-const { Header, Content, Footer } = Layout;
-const { Search } = Input;
+const {Content } = Layout;
 
 export default function MainLayout(){
     return(
         <div>
             <Layout className="layout" style={{backgroundColor: "white" }}>
-                <Header style={{ backgroundColor: 'white'}}>
-                    <PageHeader
-                        ghost={false}
-                        title="News"
-                        //subTitle=""
-                        extra={[
-                            <Button onClick={() => { window.location.href = "/login-panel" }}>Logi sisse</Button>,
-                            <Search placeholder="Otsi" style={{ width: 200 }} />
-                        ]}
-                    ></PageHeader>
-                </Header>
+                <Header/>
                     <Content>
                         <div className="site-layout-content">
                             <div>
@@ -26,7 +18,7 @@ export default function MainLayout(){
                             </div>
                         </div>
                     </Content>
-                <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                <Footer/>
             </Layout>
         </div>
     )

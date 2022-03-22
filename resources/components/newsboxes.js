@@ -9,7 +9,7 @@ import "antd/dist/antd.css";
 
 function newsboxes() {
     return (
-        <div className={styles.container}>
+        <div className={styles.grid}>
             <div className={styles.mainNews}>
                 <Image 
                     width={600}

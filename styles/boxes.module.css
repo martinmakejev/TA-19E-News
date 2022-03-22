@@ -1,11 +1,10 @@
-.container_middle{
+.container{
     background-color: white;
-    width: 100vw;
-    gap: 30px;
-    margin: 30px;
+    margin: 0 auto;
+    max-width: 75%;
 }
 
-.container {
+.grid {
     background-color: white;
     width: 100vw;
     display: grid;
