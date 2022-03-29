@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import "antd/dist/antd.css";
-import { ReactDOM } from "react";
+import React, { Component } from 'react';
 import useSWR, { SWRConfig } from "swr";
 
 function MyApp({ Component, pageProps }) {
