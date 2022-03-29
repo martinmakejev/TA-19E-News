@@ -1,19 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-// const handler = async (req, res) => {
-//   if (req.method === "POST") {
-     let prismaClient = new PrismaClient();
-//     let news = await prismaClient.news.create({
-//       data: {
-//         school_id: "1",
-//         class_id:"1",
-//         news_title: "uus uudis",
-//       },
-//     });
-//     // res.status(200).json({ success: true, news });
-//   }
-// };
-// export default handler;
+let prismaClient = new PrismaClient();
 
 export default async function createNews(req, res) {
   if (req.method === 'POST'){
