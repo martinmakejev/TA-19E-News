@@ -8,10 +8,12 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 function Newsboxes() {
     const { data, error } = useSWR(
-        "demo2.z-bit.ee/todo.json",
+        "/api/v1/news",
         fetcher
       );
     console.log(data);
+    if (error) return "An error has occurred.";
+    if (!data) return "Loading...";
     return (
         <div className={styles.grid}>
             <div className={styles.mainNews}>
@@ -20,7 +22,7 @@ function Newsboxes() {
                     height={600}
                     src={"/../public/placeholder.jpg"}
                 />
-                <h2>{data.title}</h2>
+                <h2>{data.news[0].news_title}</h2>
             </div>
             <div className={styles.news}>
                 <Image
