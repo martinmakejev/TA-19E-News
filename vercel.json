@@ -1,0 +1,6 @@
+{
+    "routes":{
+        "src": "/api/v1/news",
+        "dest": "/api/v1/news"
+    }
+}
