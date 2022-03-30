@@ -49,26 +49,6 @@ const columns = [
   },
 ];
 
-// const data = [
-//   {
-//     id: "1",
-//     news_title:
-//       "Polütehnikumi Õpilane Jan Kängsepp oli nähtud viimati kuuteistaas...",
-//     release_date: "22/1",
-//     author_name: "Priit",
-//     school: "Asked",
-//     class: "TA-19E",
-//   },
-//   {
-//     id: "2",
-//     news_title:
-//       "Polütehnikumi Õpilane Jan Kängsepp oli nähtud viimati kuuteistaas...",
-//     release_date: "22/1",
-//     author_name: "Priit",
-//     school: "Asked",
-//     class: "TA-19E",
-//   },
-// ];
 export default function adminpage() {
   const { data, error } = useSWR("/api/v1/news");
   return <Table columns={columns} dataSource={data?.news || []} />;
