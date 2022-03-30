@@ -1,22 +1,19 @@
-import React, { useState } from "react";
 import styles from '../../styles/boxes.module.css'
 import Image from 'next/image'
 import "antd/dist/antd.css";
-import { PrismaClient } from "@prisma/client";
-export { PrismaClient } from "@prisma/client";
-//logo header
-//nav content
-//footer
-export async function getStaticProps() {
-  const prisma = new PrismaClient();
-  const content = prisma.news.findMany();
-  content.json();
-  return {
-    props: { content },
-  };
-}
+import useSWR from "swr";
+import React from 'react';
 
-function newsboxes() {
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+function Newsboxes() {
+    const { data, error } = useSWR(
+        "/api/v1/news",
+        fetcher
+      );
+    console.log(data);
+    if (error) return "An error has occurred.";
+    if (!data) return "Loading...";
     return (
         <div className={styles.grid}>
             <div className={styles.mainNews}>
@@ -25,7 +22,7 @@ function newsboxes() {
                     height={600}
                     src={"/../public/placeholder.jpg"}
                 />
-                <h2>Lorem ipsum</h2>
+                <h2>{data.news[0].news_title}</h2>
             </div>
             <div className={styles.news}>
                 <Image
@@ -111,4 +108,4 @@ function newsboxes() {
     );
 }
 
-export default newsboxes;
+export default Newsboxes;
