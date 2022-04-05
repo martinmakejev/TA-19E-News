@@ -5,7 +5,7 @@ const users = [
 ]
 export default function handler (req, res) {
   // Adnembaasi päring
-  const user = users.find((u) => u.email == req.body.email && u.password == req.body.password)
+  const user = users.find((u) => u.email === req.body.email && u.password === req.body.password)
   console.log(user, req.body)
   if (!user) {
     // Wrong username or password message
