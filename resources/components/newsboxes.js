@@ -20,89 +20,100 @@ function Newsboxes() {
                 <Image 
                     width={600}
                     height={600}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[0].news_images}
                 />
                 <h2>{data.latestnews[0].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[0].id}>loe edasi</a>
             </div>
             <div className={styles.news}>
                 <Image
                     width={150}
                     height={150}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[1].news_images}
                 />
                 <h2>{data.latestnews[1].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[1].id}>loe edasi</a>
             </div>
             <div className={styles.news1}>
                 <Image
                     width={150}
                     height={150}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[2].news_images}
                 />
                 <h2>{data.latestnews[2].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[2].id}>loe edasi</a>
             </div>
             <div className={styles.news2}>
                 <Image 
                     width={250}
                     height={250}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[3].news_images}
                 />
                 <h2>{data.latestnews[3].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[3].id}>loe edasi</a>
             </div>
             <div className={styles.news3}>
                 <Image
                     width={250}
                     height={250}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[4].news_images}
                 />
                 <h2>{data.latestnews[4].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[4].id}>loe edasi</a>
             </div>
             <div className={styles.news2}>
                 <Image
                     width={250}
                     height={250}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[5].news_images}
                 />
                 <h2>{data.latestnews[5].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[5].id}>loe edasi</a>
             </div>
             <div className={styles.news3}>
                 <Image
                     width={250}
                     height={250}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[6].news_images}
                 />
                 <h2>{data.latestnews[6].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[6].id}>loe edasi</a>
             </div>
             <div className={styles.news2}>
                 <Image
                     width={250}
                     height={250}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[7].news_images}
                 />
                 <h2>{data.latestnews[7].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[7].id}>loe edasi</a>
             </div>
             <div className={styles.news3}>
                 <Image
                     width={250}
                     height={250}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[8].news_images}
                 />
                 <h2>{data.latestnews[8].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[8].id}>loe edasi</a>
             </div>
             <div className={styles.news2}>
                 <Image
                     width={250}
                     height={250}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[9].news_images}
                 />
                 <h2>{data.latestnews[9].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[9].id}>loe edasi</a>
             </div>
             <div className={styles.news3}>
                 <Image
                     width={250}
                     height={250}
-                    src={"/../public/placeholder.jpg"}
+                    src={data.latestnews[10].news_images}
                 />
                 <h2>{data.latestnews[10].news_title}</h2>
+                <a href={"/posts/"+data.latestnews[10].id}>loe edasi</a>
             </div>
         </div>
     );
