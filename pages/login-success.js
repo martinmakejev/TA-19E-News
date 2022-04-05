@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
+import React, { useEffect, useState } from "react"
+import Head from "next/head"
 import {
-  Form, Input, Button, Alert,
-} from 'antd';
-import { signIn } from 'next-auth/react';
+  Form, Input, Button, Alert
+} from "antd"
+import { signIn } from "next-auth/react"
 
-export default function Login() {
-  const [loginError, setLoginError] = useState('');
+export default function Login () {
+  const [loginError, setLoginError] = useState("")
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const errorParam = urlParams.get('error');
-    if (errorParam === 'CredentialsSignin') { setLoginError('Invalid username or password'); }
-  }, []);
+    const urlParams = new URLSearchParams(window.location.search)
+    const errorParam = urlParams.get("error")
+    if (errorParam === "CredentialsSignin") { setLoginError("Invalid username or password") }
+  }, [])
 
   const sendCredentials = async (credentials) => {
-    console.log('credentials', credentials);
-    const res = await signIn('credentials', {
+    console.log("credentials", credentials)
+    const res = await signIn("credentials", {
       email: credentials.email,
       password: credentials.password,
-      callbackUrl: '/',
-      redirect: true,
-    });
-    if (res?.error) setLoginError(`Login failed: ${res.error}`);
-  };
+      callbackUrl: "/",
+      redirect: true
+    })
+    if (res?.error) setLoginError(`Login failed: ${res.error}`)
+  }
 
   return (
-    <div className="site-layout-background" style={{ padding: 24, textAlign: 'center' }}>
+    <div className="site-layout-background" style={{ padding: 24, textAlign: "center" }}>
       <Head>
         <title>Login</title>
       </Head>
@@ -35,7 +35,7 @@ export default function Login() {
           label="Email"
           name="email"
           type="email"
-          rules={[{ required: true, message: 'Input email' }]}
+          rules={[{ required: true, message: "Input email" }]}
         >
           <Input />
         </Form.Item>
@@ -44,13 +44,13 @@ export default function Login() {
           label="Password"
           name="password"
           type="password"
-          rules={[{ required: true, message: 'Input password' }]}
+          rules={[{ required: true, message: "Input password" }]}
         >
           <Input.Password />
         </Form.Item>
         {loginError && (
         <Alert
-          style={{ marginBottom: 24, alignSelf: 'stretch' }}
+          style={{ marginBottom: 24, alignSelf: "stretch" }}
           message={loginError}
           type="error"
           showIcon
@@ -64,5 +64,5 @@ export default function Login() {
         </Form.Item>
       </Form>
     </div>
-  );
+  )
 }
