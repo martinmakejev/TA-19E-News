@@ -20,12 +20,6 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: "Sisu",
-    dataIndex: "news_content",
-    key: "news_content",
-    render: (text) => <a>{text}</a>,
-  },
-  {
     title: "Kuupäev",
     dataIndex: "release_date",
     key: "release_date",
@@ -35,21 +29,17 @@ const columns = [
     dataIndex: "author_name",
     key: "author_name",
   },
-
   {
     title: "Action",
     key: "action",
     render: (text, record) => (
       <Space size="middle">
-        <a>Vaata</a>
-        <a>Avalda</a>
         <a>Kustuta</a>
       </Space>
     ),
   },
 ];
-
-export default function adminpage() {
+export default function admindelete() {
   const { data, error } = useSWR("/api/v1/news");
   return <Table columns={columns} dataSource={data?.news || []} />;
 }

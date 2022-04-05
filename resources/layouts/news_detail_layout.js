@@ -30,7 +30,7 @@ export default function DetailLayout() {
               <h1>{data.news.news_title}</h1>
               <Image
                 alt="placeholder"
-                src={"/../public/placeholder.jpg"}
+                src={data.news.news_images}
                 layout="responsive"
                 width={100}
                 height={50}
