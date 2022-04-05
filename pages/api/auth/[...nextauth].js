@@ -1,52 +1,52 @@
-import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
+import NextAuth from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 export default NextAuth({
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. "Sign in with...")
-      name: "Credentials",
+      name: 'Credentials',
       // The credentials is used to generate a suitable form on the sign in page.
       // You can specify whatever fields you are expecting to be submitted.
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        email: { label: "Email", type: "text", placeholder: "bob@prisma.io" },
-        password: { label: "Password", type: "password", placeholder: "Password" }
+        email: { label: 'Email', type: 'text', placeholder: 'bob@prisma.io' },
+        password: { label: 'Password', type: 'password', placeholder: 'Password' },
       },
-      async authorize (credentials, req) {
-        console.log("made it to authorize")
-        console.log("credentials", credentials)
+      async authorize(credentials, req) {
+        console.log('made it to authorize');
+        console.log('credentials', credentials);
         try {
-          const res = await fetch("https://tptusers.vercel.app/api/v1/login", {
-            method: "POST",
+          const res = await fetch('https://tptusers.vercel.app/api/v1/login', {
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json"
+              'Content-Type': 'application/json',
             },
-            body: JSON.stringify(credentials)
-          })
+            body: JSON.stringify(credentials),
+          });
           if (res.status === 401) {
-            throw new Error("Invalid credentials")
+            throw new Error('Invalid credentials');
           }
 
-          const user = await res.json()
+          const user = await res.json();
 
           if (res.ok && user) {
-            console.log("user: ", user)
-            return user
+            console.log('user: ', user);
+            return user;
           }
         } catch (e) {
-          const errorMessage = e.message
-          throw new Error(errorMessage + "&email=" + credentials.email)
+          const errorMessage = e.message;
+          throw new Error(`${errorMessage}&email=${credentials.email}`);
         }
-      }
-    })
+      },
+    }),
   ],
   session: {
-    strategy: "jwt"
+    strategy: 'jwt',
   },
   pages: {
-    signIn: "/login",
-    error: "/login"
-  }
-})
+    signIn: '/login',
+    error: '/login',
+  },
+});
