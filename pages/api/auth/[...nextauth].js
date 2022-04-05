@@ -23,7 +23,8 @@ export default NextAuth({
         console.log("credentials", credentials);
         try {
           const res = await fetch(
-            "https://" + process.env.NEXTAUTH_URL + "/api/v1/login",
+            process.env.NEXTAUTH_URL ||
+              "https://" + process.env.LOGIN_URL + "/api/v1/login",
             {
               method: "POST",
               headers: {
