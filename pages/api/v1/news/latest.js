@@ -4,7 +4,7 @@ const handler = async (req, res) => {
   if (req.method === "GET") {
     let primsaClient = new PrismaClient();
     const latestnews = await primsaClient.news.findMany({
-        take: 11,
+        take: parseInt(req.query.count || 5),
         orderBy: {
             release_date: 'desc',
         },

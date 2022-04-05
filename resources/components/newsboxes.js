@@ -8,7 +8,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 function Newsboxes() {
     const { data, error } = useSWR(
-        "/api/v1/news/latest",
+        "/api/v1/news/latest?count=11",
         fetcher
       );
     console.log(data);
