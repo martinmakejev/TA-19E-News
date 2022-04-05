@@ -1,78 +1,115 @@
-import React, { useEffect, useState } from "react";
-import Head from "next/head";
-import { Form, Input, Button, Alert } from "antd";
-import { signIn } from "next-auth/react";
+import { useState } from 'react';
+import { signIn, getCsrfToken } from 'next-auth/react';
+import { Formik, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { useRouter } from 'next/router';
 
-export default function Login() {
-  const [loginError, setLoginError] = useState("");
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const errorParam = urlParams.get("error");
-    if (errorParam === "CredentialsSignin") {
-      setLoginError("Invalid username or password");
-    }
-  }, []);
-
-  const sendCredentials = async (credentials) => {
-    console.log("credentials", credentials);
-    const res = await signIn("credentials", {
-      email: credentials.email,
-      password: credentials.password,
-      callbackUrl: "/",
-      redirect: true,
-    });
-    if (res?.error) setLoginError("Login failed: " + res.error);
-  };
+export default function SignIn({ csrfToken }) {
+  const router = useRouter();
+  const [error, setError] = useState(null);
 
   return (
-    <div
-      className="site-layout-background"
-      style={{ padding: 24, textAlign: "center" }}
-    >
-      <Head>
-        <title>Login</title>
-      </Head>
-      <Form
-        name="basic"
-        onFinish={sendCredentials}
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 8 }}
-        initialValues={{ remember: true }}
-        autoComplete="off"
+    <>
+      <Formik
+        initialValues={{ email: '', password: ''}}
+        validationSchema={Yup.object({
+          email: Yup.string()
+            .max(30, 'Must be 30 characters or less')
+            .email('Invalid email address')
+            .required('Please enter your email'),
+          password: Yup.string().required('Please enter your password'),
+        })}
+        onSubmit={async (values, { setSubmitting }) => {
+          const res = await signIn('credentials', {
+            redirect: false,
+            email: values.email,
+            password: values.password,
+            callbackUrl: `${window.location.origin}`,
+          });
+          if (res?.error) {
+            setError(res.error);
+          } else {
+            setError(null);
+          }
+          if (res.url) router.push(res.url);
+          setSubmitting(false);
+        }}
       >
-        <Form.Item
-          label="Email"
-          name="email"
-          type="email"
-          rules={[{ required: true, message: "Input email" }]}
-        >
-          <Input />
-        </Form.Item>
+        {(formik) => (
+          <form onSubmit={formik.handleSubmit}>
+            <div 
+            className="bg-red-400 flex flex-col items-center 
+            justify-center min-h-screen py-2 shadow-lg">
+              <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <input
+                  name="csrfToken"
+                  type="hidden"
+                  defaultValue={csrfToken}
+                />
 
-        <Form.Item
-          label="Password"
-          name="password"
-          type="password"
-          rules={[{ required: true, message: "Input password" }]}
-        >
-          <Input.Password />
-        </Form.Item>
-        {loginError && (
-          <Alert
-            style={{ marginBottom: 24, alignSelf: "stretch" }}
-            message={loginError}
-            type="error"
-            showIcon
-            closable
-          />
+                <div className="text-red-400 text-md text-center rounded p-2">
+                  {error}
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="email"
+                    className="uppercase text-sm text-gray-600 font-bold"
+                  >
+                    Email
+                    <Field
+                      name="email"
+                      aria-label="enter your email"
+                      aria-required="true"
+                      type="text"
+                      className="w-full bg-gray-300 text-gray-900 mt-2 p-3"
+                    />
+                  </label>
+
+                  <div className="text-red-600 text-sm">
+                    <ErrorMessage name="email" />
+                  </div>
+                </div>
+                <div className="mb-6">
+                  <label
+                    htmlFor="password"
+                    className="uppercase text-sm text-gray-600 font-bold"
+                  >
+                    password
+                    <Field
+                      name="password"
+                      aria-label="enter your password"
+                      aria-required="true"
+                      type="password"
+                      className="w-full bg-gray-300 text-gray-900 mt-2 p-3"
+                    />
+                  </label>
+
+                  <div className="text-red-600 text-sm">
+                    <ErrorMessage name="password" />
+                  </div>
+                </div>
+                <div className="flex items-center justify-center">
+                  <button
+                    type="submit"
+                    className="bg-green-400 text-gray-100 p-3 rounded-lg w-full"
+                  >
+                    {formik.isSubmitting ? 'Please wait...' : 'Sign In'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
         )}
-        <Form.Item wrapperCol={{ offset: 8, span: 1 }}>
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+      </Formik>
+    </>
   );
+}
+
+// This is the recommended way for Next.js 9.3 or newer
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      csrfToken: await getCsrfToken(context),
+    },
+  };
 }
