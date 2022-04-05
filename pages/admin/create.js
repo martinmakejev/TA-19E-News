@@ -3,7 +3,7 @@ import { Form, Input, Button, Select, Upload } from 'antd';
 import "antd/dist/antd.css";
 import { UploadOutlined } from '@ant-design/icons';
 
-export default function create_news() {
+export default function admincreate() {
 
     const onFinish = (values) => {
         console.log('Success:', values);
