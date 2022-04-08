@@ -25,7 +25,7 @@ export default NextAuth({
         };
 
         const res = await fetch(
-          "https://" + process.env.VERCEL_URL + "/api/v1/login",
+          "https://" + process.env.NEXTAUTH_URL + "/api/v1/login",
           {
             method: "POST",
             body: JSON.stringify(payload),
