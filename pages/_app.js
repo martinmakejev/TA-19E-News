@@ -1,10 +1,9 @@
-import "../styles/globals.css";
-import "antd/dist/antd.css";
+import '../styles/globals.css';
+import 'antd/dist/antd.css';
 import React, { Component } from 'react';
-import useSWR, { SWRConfig } from "swr";
-import { SessionProvider } from "next-auth/react"
+import useSWR, { SWRConfig } from 'swr';
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp({ Component, pageProps }) {
   return (
     <SWRConfig
       value={{
@@ -12,10 +11,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
           fetch(resource, init).then((res) => res.json()),
       }}
     >
-      {" "}
-      <SessionProvider session={session}>
-      <Component {...pageProps}/>
-    </SessionProvider>
+      {' '}
+      <Component {...pageProps} />{' '}
     </SWRConfig>
   );
 }

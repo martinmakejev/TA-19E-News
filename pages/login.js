@@ -1,116 +1,123 @@
-import { useState } from "react";
-import { signIn, getCsrfToken } from "next-auth/react";
-import { Formik, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import { useRouter } from "next/router";
+import React, { useState } from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import swal from 'sweetalert';
 
-export default function SignIn({ csrfToken }) {
-  const router = useRouter();
-  const [error, setError] = useState(null);
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: '100vh',
+  },
+  image: {
+    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundSize: 'cover',
+  },
+  paper: {
+    margin: theme.spacing(8, 4),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%',
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
-  return (
-    <>
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validationSchema={Yup.object({
-          email: Yup.string()
-            .max(30, "Must be 30 characters or less")
-            .email("Invalid email address")
-            .required("Please enter your email"),
-          password: Yup.string().required("Please enter your password"),
-        })}
-        onSubmit={async (values, { setSubmitting }) => {
-          const res = await signIn("credentials", {
-            redirect: false,
-            email: values.email,
-            password: values.password,
-            callbackUrl: `${window.location.origin}`,
-          });
-          if (res?.error) {
-            setError(res.error);
-          } else {
-            setError(null);
-          }
-          if (res.url) router.push(res.url);
-          setSubmitting(false);
-        }}
-      >
-        {(formik) => (
-          <form onSubmit={formik.handleSubmit}>
-            <div
-              className="bg-red-400 flex flex-col items-center 
-            justify-center min-h-screen py-2 shadow-lg"
-            >
-              <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <input
-                  name="csrfToken"
-                  type="hidden"
-                  defaultValue={csrfToken}
-                />
-
-                <div className="text-red-400 text-md text-center rounded p-2">
-                  {error}
-                </div>
-                <div className="mb-4">
-                  <label
-                    htmlFor="email"
-                    className="uppercase text-sm text-gray-600 font-bold"
-                  >
-                    Email
-                    <Field
-                      name="email"
-                      aria-label="enter your email"
-                      aria-required="true"
-                      type="text"
-                      className="w-full bg-gray-300 text-gray-900 mt-2 p-3"
-                    />
-                  </label>
-
-                  <div className="text-red-600 text-sm">
-                    <ErrorMessage name="email" />
-                  </div>
-                </div>
-                <div className="mb-6">
-                  <label
-                    htmlFor="password"
-                    className="uppercase text-sm text-gray-600 font-bold"
-                  >
-                    password
-                    <Field
-                      name="password"
-                      aria-label="enter your password"
-                      aria-required="true"
-                      type="password"
-                      className="w-full bg-gray-300 text-gray-900 mt-2 p-3"
-                    />
-                  </label>
-
-                  <div className="text-red-600 text-sm">
-                    <ErrorMessage name="password" />
-                  </div>
-                </div>
-                <div className="flex items-center justify-center">
-                  <button
-                    type="submit"
-                    className="bg-green-400 text-gray-100 p-3 rounded-lg w-full"
-                  >
-                    {formik.isSubmitting ? "Please wait..." : "Sign In"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
-        )}
-      </Formik>
-    </>
-  );
+async function loginUser(credentials) {
+  return fetch('https://tptusers.vercel.app/api/v1/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
 }
 
-// This is the recommended way for Next.js 9.3 or newer
-export async function getServerSideProps(context) {
-  return {
-    props: {
-      csrfToken: await getCsrfToken(context),
-    },
+export default function Signin() {
+  const classes = useStyles();
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await loginUser({
+      username,
+      password,
+    });
+    if ('accessToken' in response) {
+      swal('Success', response.message, 'success', {
+        buttons: false,
+        timer: 2000,
+      }).then((value) => {
+        localStorage.setItem('accessToken', response['accessToken']);
+        localStorage.setItem('user', JSON.stringify(response['user']));
+        window.location.href = '/profile';
+      });
+    } else {
+      swal('Failed', response.message, 'error');
+    }
   };
+
+  return (
+    <Grid container className={classes.root}>
+      <CssBaseline />
+      <Grid item xs={false} md={7} className={classes.image} />
+      <Grid item xs={12} md={5} component={Paper} elevation={6} square>
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              name="email"
+              label="Email Address"
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="password"
+              name="password"
+              label="Password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+          </form>
+        </div>
+      </Grid>
+    </Grid>
+  );
 }
