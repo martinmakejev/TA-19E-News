@@ -36,7 +36,7 @@ export default function DetailLayout() {
                 height={50}
               />
               <p>Autor: {data.news.author_name}</p>
-              <p>Kuupäev: {data.news.release_date}</p>
+              <p>Kuupäev: {new Date(data.news.release_date).toLocaleDateString()}</p>
               <p>Kool: {data.news.school_id}</p>
               <p>Klass: {data.news.class_id}</p>
               <div style={{ paddingTop: "20px" }}>
