@@ -24,14 +24,17 @@ export default NextAuth({
           password: credentials.password,
         };
 
-        const res = await fetch("https://tptusers.vercel.app/api/v1/login", {
-          method: "POST",
-          body: JSON.stringify(payload),
-          headers: {
-            "Content-Type": "application/json",
-            "Accept-Language": "en-US",
-          },
-        });
+        const res = await fetch(
+          "https://" + process.env.VERCEL_URL + "/api/v1/login",
+          {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: {
+              "Content-Type": "application/json",
+              "Accept-Language": "en-US",
+            },
+          }
+        );
 
         const user = await res.json();
         if (!res.ok) {
