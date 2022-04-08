@@ -1,7 +1,7 @@
 .container{
     background-color: white;
     margin: 0 auto;
-    max-width: 75%;
+    width: 75%;
 }
 
 .grid {

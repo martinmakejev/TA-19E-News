@@ -27,15 +27,20 @@ export default function DetailLayout() {
         <Content className={styles.container}>
           <div className="site-layout-content">
             <div>
-              <h1>{data.news.news_title}</h1>
-              <Image
-                alt="placeholder"
-                src={data.news.news_images}
-                layout="responsive"
-                width={100}
-                height={50}
-              />
-              <p>Autor: {data.news.author_name}</p>
+              <div>
+                <h1>{data.news.news_title}</h1>
+                <p>Autor: {data.news.author_name}</p>
+              </div>
+              <div>
+                <Image
+                  alt="placeholder"
+                  src={data.news.news_images}
+                  layout="responsive"
+                  width={100}
+                  height={50}
+                  objectFit= "cover"
+                />
+              </div>
               <p>Kuupäev: {new Date(data.news.release_date).toLocaleDateString()}</p>
               <p>Kool: {data.news.school_id}</p>
               <p>Klass: {data.news.class_id}</p>
