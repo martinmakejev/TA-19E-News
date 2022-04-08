@@ -19,8 +19,8 @@
     text-align: center;
     grid-column: 2 / span 2;
     grid-row: 1 / span 5;
-    border: 2px solid black;
-    border-radius: 5px;
+    /* border: 2px solid black;
+    border-radius: 5px; */
 }
 
 .news {
@@ -29,8 +29,8 @@
     text-align: center;
     grid-column: 4;
     grid-row: 1 / span 1;
-    border: 2px solid black;
-    border-radius: 5px;
+    /* border: 2px solid black;
+    border-radius: 5px; */
 }
 
 .news1 {
@@ -40,8 +40,8 @@
     text-align: center;
     grid-column: 4;
     grid-row: 4 / span 2;
-    border: 2px solid black;
-    border-radius: 5px;
+    /* border: 2px solid black;
+    border-radius: 5px; */
 }
 
 .news2 {

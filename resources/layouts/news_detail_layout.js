@@ -41,7 +41,7 @@ export default function DetailLayout() {
                   objectFit= "cover"
                 />
               </div>
-              <p>Kuupäev: {new Date(data.news.release_date).toLocaleDateString()}</p>
+              <p style={{float: "right"}}>Kuupäev: {new Date(data.news.release_date).toLocaleDateString()}</p>
               <p>Kool: {data.news.school_id}</p>
               <p>Klass: {data.news.class_id}</p>
               <div style={{ paddingTop: "20px" }}>
