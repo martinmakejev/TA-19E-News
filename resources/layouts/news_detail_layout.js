@@ -35,6 +35,10 @@ export default function DetailLayout() {
                 width={100}
                 height={50}
               />
+              <p>Autor: {data.news.author_name}</p>
+              <p>Kuupäev: {data.news.release_date}</p>
+              <p>Kool: {data.news.school_id}</p>
+              <p>Klass: {data.news.class_id}</p>
               <div style={{ paddingTop: "20px" }}>
                 <p>{data.news.news_content}</p>
               </div>
