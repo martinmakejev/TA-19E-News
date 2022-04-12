@@ -26,7 +26,7 @@ function Newsboxes() {
                             src={data.latestnews[0].news_images}
                         />
                         <h2>{data.latestnews[0].news_title}</h2>
-                        <p>{new Date(data.latestnews[0].release_date).toLocaleDateString()}</p>
+                        <p>{data.latestnews[0].release_date}</p>
                         <a href={"/posts/"+data.latestnews[0].id}>loe edasi</a>
                     </div>
                 </Col>
@@ -40,7 +40,7 @@ function Newsboxes() {
                                     src={data.latestnews[1].news_images}
                                 />
                                 <h2>{data.latestnews[1].news_title}</h2>
-                                <p>{new Date(data.latestnews[1].release_date).toLocaleDateString()}</p>
+                                <p>{data.latestnews[1].release_date}</p>
                                 <a href={"/posts/"+data.latestnews[1].id}>loe edasi</a>
                             </div>
                         </Col>
@@ -54,7 +54,7 @@ function Newsboxes() {
                                     src={data.latestnews[2].news_images}
                                 />
                                 <h2>{data.latestnews[2].news_title}</h2>
-                                <p>{new Date(data.latestnews[2].release_date).toLocaleDateString()}</p>
+                                <p>{data.latestnews[2].release_date}</p>
                                 <a href={"/posts/"+data.latestnews[2].id}>loe edasi</a>
                             </div>
                         </Col>
@@ -70,7 +70,7 @@ function Newsboxes() {
                             src={data.latestnews[3].news_images}
                         />
                         <h2>{data.latestnews[3].news_title}</h2>
-                        <p>{new Date(data.latestnews[3].release_date).toLocaleDateString()}</p>
+                        <p>{data.latestnews[3].release_date}</p>
                         <a href={"/posts/"+data.latestnews[3].id}>loe edasi</a>
                     </div>
                 </Col>
@@ -82,7 +82,7 @@ function Newsboxes() {
                             src={data.latestnews[4].news_images}
                         />
                         <h2>{data.latestnews[4].news_title}</h2>
-                        <p>{new Date(data.latestnews[4].release_date).toLocaleDateString()}</p>
+                        <p>{data.latestnews[4].release_date}</p>
                         <a href={"/posts/"+data.latestnews[4].id}>loe edasi</a>
                     </div>
                 </Col>
@@ -96,7 +96,7 @@ function Newsboxes() {
                             src={data.latestnews[5].news_images}
                         />
                         <h2>{data.latestnews[5].news_title}</h2>
-                        <p>{new Date(data.latestnews[5].release_date).toLocaleDateString()}</p>
+                        <p>{data.latestnews[5].release_date}</p>
                         <a href={"/posts/"+data.latestnews[5].id}>loe edasi</a>
                     </div>
                 </Col>
@@ -108,7 +108,7 @@ function Newsboxes() {
                             src={data.latestnews[6].news_images}
                         />
                         <h2>{data.latestnews[6].news_title}</h2>
-                        <p>{new Date(data.latestnews[6].release_date).toLocaleDateString()}</p>
+                        <p>{data.latestnews[6].release_date}</p>
                         <a href={"/posts/"+data.latestnews[6].id}>loe edasi</a>
                     </div>
                 </Col>
@@ -122,7 +122,7 @@ function Newsboxes() {
                             src={data.latestnews[7].news_images}
                         />
                         <h2>{data.latestnews[7].news_title}</h2>
-                        <p>{new Date(data.latestnews[7].release_date).toLocaleDateString()}</p>
+                        <p>{data.latestnews[7].release_date}</p>
                         <a href={"/posts/"+data.latestnews[7].id}>loe edasi</a>
                     </div>
                 </Col>
@@ -134,7 +134,7 @@ function Newsboxes() {
                             src={data.latestnews[8].news_images}
                         />
                         <h2>{data.latestnews[8].news_title}</h2>
-                        <p>{new Date(data.latestnews[8].release_date).toLocaleDateString()}</p>
+                        <p>{data.latestnews[8].release_date}</p>
                         <a href={"/posts/"+data.latestnews[8].id}>loe edasi</a>
                     </div>
                 </Col>
@@ -148,7 +148,7 @@ function Newsboxes() {
                             src={data.latestnews[9].news_images}
                         />
                         <h2>{data.latestnews[9].news_title}</h2>
-                        <p>{new Date(data.latestnews[9].release_date).toLocaleDateString()}</p>
+                        <p>{data.latestnews[9].release_date}</p>
                         <a href={"/posts/"+data.latestnews[9].id}>loe edasi</a>
                     </div>
                 </Col>
@@ -160,7 +160,7 @@ function Newsboxes() {
                             src={data.latestnews[10].news_images}
                         />
                         <h2>{data.latestnews[10].news_title}</h2>
-                        <p>{new Date(data.latestnews[10].release_date).toLocaleDateString()}</p>
+                        <p>{data.latestnews[10].release_date}</p>
                         <a href={"/posts/"+data.latestnews[10].id}>loe edasi</a>
                     </div>
                 </Col>
