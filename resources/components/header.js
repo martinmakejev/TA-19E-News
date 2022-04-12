@@ -11,7 +11,7 @@ export default function MainLayout() {
       <Header style={{ backgroundColor: 'white' }}>
         <PageHeader
           ghost={false}
-          title="News"
+          title={<a href="/" style={{color: "black"}}>News</a>}
           extra={[
             <Text>Not signed in</Text>,
             <Button
