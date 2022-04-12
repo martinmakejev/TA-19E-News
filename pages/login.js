@@ -19,7 +19,7 @@ export default function Login() {
     const res = await signIn('credentials', {
       email: credentials.email,
       password: credentials.password,
-      callbackUrl: '/',
+      callbackUrl: '/admin',
       redirect: true,
     });
     if (res?.error) setLoginError('Login failed: ' + res.error);
