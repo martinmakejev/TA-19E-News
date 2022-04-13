@@ -1,10 +1,10 @@
 import { PrismaClient } from "@prisma/client";
 
-let prismaClient = new PrismaClient();
 
 export default async function createNews(req, res) {
   if (req.method === 'DELETE'){
     try {
+      let prismaClient = new PrismaClient();
         let news = await prismaClient.news.delete({
         where:{
             id: 5
