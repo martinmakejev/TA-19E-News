@@ -17,9 +17,9 @@ function confirm(e) {
   //   "/api/v1/news/delete",
   //   fetcher
   //);
-  console.log(data);
-  if (error) return "An error has occurred.";
-  if (!data) return "Loading...";
+  // console.log(data);
+  // if (error) return "An error has occurred.";
+  // if (!data) return "Loading...";
     
 }
 
