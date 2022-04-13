@@ -13,12 +13,13 @@ export default function DetailLayout() {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data, error } = useSWR(`/api/v1/news/${id}`, fetcher);
+  const { data: newsData, error: newsError } = useSWR(`/api/v1/news/${id}`, fetcher);
+  //const { data: schoolsData, error: schoolError } = useSWR("/api/users", userFetcher);
 
-  console.log(data, error);
+  console.log(newsData, newsError);
 
-  if (error) return "An error has occurred.";
-  if (!data) return "Loading...";
+  if (newsError) return "An error has occurred.";
+  if (!newsData) return "Loading...";
 
   return (
     <div>
@@ -27,16 +28,25 @@ export default function DetailLayout() {
         <Content className={styles.container}>
           <div className="site-layout-content">
             <div>
-              <h1>{data.news.news_title}</h1>
-              <Image
-                alt="placeholder"
-                src={data.news.news_images}
-                layout="responsive"
-                width={100}
-                height={50}
-              />
+              <div>
+                <h1>{newsData.news.news_title}</h1>
+                <p>Autor: {newsData.news.author_name}</p>
+              </div>
+              <div>
+                <Image
+                  alt="placeholder"
+                  src={newsData.news.news_images}
+                  layout="responsive"
+                  width={100}
+                  height={50}
+                  objectFit= "cover"
+                />
+              </div>
+              <p style={{float: "right"}}>Kuupäev: {new Date(newsData.news.release_date).toLocaleDateString()}</p>
+              <p>Kool: {newsData.news.school_id}</p>
+              <p>Klass: {newsData.news.class_id}</p>
               <div style={{ paddingTop: "20px" }}>
-                <p>{data.news.news_content}</p>
+                <p>{newsData.news.news_content}</p>
               </div>
             </div>
           </div>
