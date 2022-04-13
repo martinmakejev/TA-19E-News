@@ -8,7 +8,7 @@ import { Popconfirm, message } from 'antd';
 import deleteNews from "../api/v1/news/delete";
 import { PrismaClient } from "@prisma/client";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+//const fetcher = (url) => fetch(url).then((res) => res.json());
 
 function confirm(e) {
   console.log(e);
