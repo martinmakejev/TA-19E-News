@@ -15,7 +15,7 @@ export default async function updateNews(req, res) {
             news_title: "uudis2 aga see on edititud update api abil ",
             author_name: "Janeks",
             news_content: "kuidagi see töötab aga edit",
-            news_images: "lol.png",
+            //news_images: "lol.png",
             release_date: "2022-03-29T12:06:11.719Z"
           },
         });

@@ -4,6 +4,29 @@ import "antd/dist/antd.css";
 import { Table, Tag, Space } from "antd";
 import useSWR from "swr";
 import { useRouter } from 'next/router';
+import { Popconfirm, message } from 'antd';
+import deleteNews from "../api/v1/news/delete";
+import { PrismaClient } from "@prisma/client";
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+function confirm(e) {
+  console.log(e);
+  message.success('Click on Yes');
+  // const { data, error } = useSWR(
+  //   "/api/v1/news/delete",
+  //   fetcher
+  //);
+  console.log(data);
+  if (error) return "An error has occurred.";
+  if (!data) return "Loading...";
+    
+}
+
+function cancel(e) {
+  console.log(e);
+  message.error('Click on No');
+}
 
 const borderStyle = { border: "1px solid palevioletred" };
 const rowStyle = { ...borderStyle, width: "100%", padding: 10 };
@@ -48,7 +71,15 @@ export default function adminpage() {
         <Space size="middle">
           <a onClick={() =>  router.push("/posts/"+record.id)}>Vaata</a>
           <a>Muuda</a>
-          <a>Kustuta</a>
+          <Popconfirm
+            title="Are you sure to delete this task?"
+            onConfirm={confirm}
+            onCancel={cancel}
+            okText="Yes"
+            cancelText="No"
+          >
+            <a>Kustuta</a>
+          </Popconfirm>
         </Space>
       ),
     },
