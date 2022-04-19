@@ -21,7 +21,7 @@ async function main() {
       author_name: "artur Artur artur",
       news_content:
         "artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur artur ",
-      news_images: "lol.png",
+      //news_images: "lol.png",
       release_date: new Date(),
     },
   });
