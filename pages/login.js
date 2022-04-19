@@ -17,10 +17,10 @@ export default function Login() {
   const sendCredentials = async (credentials) => {
     console.log('credentials', credentials);
     const res = await signIn('credentials', {
+      redirect: false,
       email: credentials.email,
       password: credentials.password,
       callbackUrl: '/admin',
-      redirect: true,
     });
     if (res?.error) setLoginError('Login failed: ' + res.error);
   };
@@ -59,26 +59,18 @@ export default function Login() {
           {loginError && (
             <Alert
               style={{ marginBottom: 24, alignSelf: 'stretch' }}
-              message={loginError}
+              message="Invalid credentials"
               type="error"
               showIcon
               closable
             />
           )}
 
-          <a>Forgot your password?</a>
-
           <Form.Item style={{ 'margin-bottom': '4px' }}>
             <Button type="primary" htmlType="submit">
               Login
             </Button>
           </Form.Item>
-
-          <div>
-            <p style={{ display: 'inline-block', color: '#72767D' }}>
-              Need an account?<a href="/register"> Register</a>
-            </p>
-          </div>
         </Form>
       </Card>
     </div>
