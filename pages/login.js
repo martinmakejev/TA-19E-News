@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Form, Input, Button, Alert, Card } from 'antd';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 export default function Login() {
-  const [loginError, setLoginError] = useState('');
+  const router = useRouter();
+  const [error, setLoginError] = useState(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -22,7 +24,12 @@ export default function Login() {
       password: credentials.password,
       callbackUrl: '/admin',
     });
-    if (res?.error) setLoginError('Login failed: ' + res.error);
+    if (res?.error) {
+      setLoginError(res.error);
+    } else {
+      setLoginError(null);
+    }
+    if (res.url) router.push(res.url);
   };
 
   return (
@@ -56,7 +63,7 @@ export default function Login() {
           >
             <Input.Password />
           </Form.Item>
-          {loginError && (
+          {error && (
             <Alert
               style={{ marginBottom: 24, alignSelf: 'stretch' }}
               message="Invalid credentials"
