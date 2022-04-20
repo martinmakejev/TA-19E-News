@@ -7,18 +7,21 @@ export default async function createNews(req, res) {
     try {
       let news = await prismaClient.news.create({
         data: {
-          school_id: 1,
-          class_id: 1,
-          news_title: "uudis mis on uus",
-          author_name: "Janeks",
-          news_content: "kuidagi see töötab",
-          news_images: "lol.png",
-          release_date: "2022-03-29T12:06:11.719Z"
+          school_id: req.body.school_id,
+          class_id: req.body.class_id,
+          news_title: req.body.news_title,
+          author_name: req.body.author_name,
+          news_content: req.body.news_content,
+          news_images: req.body.news_images,
+          release_date: req.body.release_date
+          
         },
       });
       res.status(200).json({ success: true, news });
     }catch(err) {
-      res.status(err).json({});}
+      res.status(err).json({});
+      console.log("you FUCKED UP")
+    }
     } else {
       res.status(405);
       res.end();
