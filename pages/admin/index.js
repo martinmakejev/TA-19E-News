@@ -3,8 +3,8 @@ import "antd/dist/antd.css";
 import "antd/dist/antd.css";
 import { Table, Tag, Space } from "antd";
 import useSWR from "swr";
-import { useRouter } from 'next/router';
-import { Popconfirm, message } from 'antd';
+import { useRouter } from "next/router";
+import { Popconfirm, message } from "antd";
 import deleteNews from "../api/v1/news/delete";
 import { PrismaClient } from "@prisma/client";
 
@@ -12,7 +12,7 @@ import { PrismaClient } from "@prisma/client";
 
 function confirm(e) {
   console.log(e);
-  message.success('Click on Yes');
+  message.success("Click on Yes");
   // const { data, error } = useSWR(
   //   "/api/v1/news/delete",
   //   fetcher
@@ -20,12 +20,12 @@ function confirm(e) {
   // console.log(data);
   // if (error) return "An error has occurred.";
   // if (!data) return "Loading...";
-    
+
 }
 
 function cancel(e) {
   console.log(e);
-  message.error('Click on No');
+  message.error("Click on No");
 }
 
 const borderStyle = { border: "1px solid palevioletred" };
@@ -69,7 +69,7 @@ export default function adminpage() {
       key: "action",
       render: (text, record) => (
         <Space size="middle">
-          <a onClick={() =>  router.push("/posts/"+record.id)}>Vaata</a>
+          <a onClick={() => router.push("/posts/" + record.id)}>Vaata</a>
           <a>Muuda</a>
           <Popconfirm
             title="Are you sure to delete this task?"
@@ -85,16 +85,10 @@ export default function adminpage() {
     },
   ];
 
-
-  
   return (
     <>
-    <button onClick={() =>  router.push("/admin/create")}>Lisa uudis</button>
-  <Table 
-  columns={columns} 
-  dataSource={data?.news || []} 
-
-  />
-  </>
-    );
+      <button onClick={() => router.push("/admin/create")}>Lisa uudis</button>
+      <Table columns={columns} dataSource={data?.news || []} />
+    </>
+  );
 }
