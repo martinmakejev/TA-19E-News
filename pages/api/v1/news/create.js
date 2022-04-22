@@ -1,6 +1,18 @@
 import { PrismaClient } from "@prisma/client";
 
 let prismaClient = new PrismaClient();
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var h = String(today.getHours()).padStart(2, '0');
+var m = String(today.getMinutes()).padStart(2, '0');
+var s = String(today.getSeconds()).padStart(2, '0');
+var ms = String(today.getMilliseconds()).padStart(2, '0');
+
+
+var yyyy = today.getFullYear();
+
+today =yyyy+"-"+mm+"-" + dd + 'T' + h + ':' + m + ":" + s+ "."+ms+"Z";
 
 export default async function createNews(req, res) {
   if (req.method === 'POST'){
@@ -14,7 +26,7 @@ export default async function createNews(req, res) {
           author_name:  req.body.author_name,
           news_content: req.body.news_content,
           news_images: req.body.news_images,
-          release_date: "2022-03-29T12:06:11.719Z"
+          release_date: today
 
           
         },
