@@ -8,17 +8,16 @@ export default function admincreate() {
 
     const handleSubmit = (values) => {
         // valObj = JSON.parse(values)
-//       const obj = {
-//	"school_id": values.school_id,
-//	"class_id": values.class_id,
-//	"news_title": "uudis mis on uus aga see oli postmanis lisatrud",
-//	"author_name": "Janeks",
-//	"news_content": "kuidagi see töötab",
-//	"news_images": "lol.png",
-//	"release_date": "2022-03-29T12:06:11.719Z"
-//
-
-        console.log("ass", values)
+        const obj = {
+	"school_id": values.selectschool,
+	"class_id": 1,
+	"news_title": "uudis mis on uus aga see oli postmanis lisatrud",
+	"author_name": "Janeks",
+	"news_content": "kuidagi see töötab",
+	"news_images": "https://i.postimg.cc/FzSRvg36/image.png",
+	"release_date": "2022-03-29T12:06:11.719Z"
+}
+        console.log(obj)
         
         fetch("/api/v1/news/create", {
             method: "POST",
