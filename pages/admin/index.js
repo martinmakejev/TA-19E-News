@@ -2,25 +2,13 @@ import React from "react";
 import "antd/dist/antd.css";
 import "antd/dist/antd.css";
 import { Table, Tag, Space } from "antd";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import { useRouter } from "next/router";
 import { Popconfirm, message } from "antd";
-import deleteNews from "../api/v1/news/delete";
-import { PrismaClient } from "@prisma/client";
-
-//const fetcher = (url) => fetch(url).then((res) => res.json());
 
 function confirm(e) {
   console.log(e);
   message.success("Click on Yes");
-  // const { data, error } = useSWR(
-  //   "/api/v1/news/delete",
-  //   fetcher
-  //);
-  // console.log(data);
-  // if (error) return "An error has occurred.";
-  // if (!data) return "Loading...";
-
 }
 
 function cancel(e) {
@@ -32,8 +20,20 @@ const borderStyle = { border: "1px solid palevioletred" };
 const rowStyle = { ...borderStyle, width: "100%", padding: 10 };
 
 export default function adminpage() {
+  const { mutate } = useSWRConfig();
   const { data, error } = useSWR("/api/v1/news");
   const router = useRouter();
+
+  function handleDelete(id) {
+    fetch("/api/v1/news/" + id, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log("Delete student response: ", json);
+        mutate(`/api/v1/news`);
+      });
+  }
 
   const columns = [
     {
@@ -70,10 +70,10 @@ export default function adminpage() {
       render: (text, record) => (
         <Space size="middle">
           <a onClick={() => router.push("/posts/" + record.id)}>Vaata</a>
-          <a>Muuda</a>
+          <a onClick={() => router.push("/admin/edit")}>Muuda</a>
           <Popconfirm
             title="Are you sure to delete this task?"
-            onConfirm={confirm}
+            onConfirm={(confirm) => handleDelete(record.id)}
             onCancel={cancel}
             okText="Yes"
             cancelText="No"
