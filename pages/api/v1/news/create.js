@@ -7,7 +7,7 @@ export default async function createNews(req, res) {
     try {
       let news = await prismaClient.news.create({
         data: {
-          school_id: req.body.school_id,
+          school_id: parseInt(req.body.school_id),
           class_id: req.body.class_id,
           news_title: req.body.news_title,
           author_name: req.body.author_name,

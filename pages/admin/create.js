@@ -17,7 +17,8 @@ export default function admincreate() {
 	"news_images": "lol.png",
 	"release_date": "2022-03-29T12:06:11.719Z"
 }
-        console.log(obj)
+
+        console.log("ass", values)
         
         fetch("/api/v1/news/create", {
             method: "POST",
@@ -38,9 +39,7 @@ export default function admincreate() {
             console.log("shits fucked up now")
           })
     }
-    const onFinish = (values) => {
-        console.log('Success:', values);
-    };
+    
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -68,7 +67,7 @@ export default function admincreate() {
         initialValues={{
             remember: true,
         }}
-        onFinish={onFinish}
+        onFinish={handleSubmit}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
         >
@@ -155,7 +154,7 @@ export default function admincreate() {
             span: 16,
             }}
         >
-            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+            <Button type="primary" htmlType="submit" >
             Submit
             </Button>
         </Form.Item>
