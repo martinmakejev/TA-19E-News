@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Form, Input, Button, Alert, Card } from 'antd';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 export default function Login() {
-  const [loginError, setLoginError] = useState('');
+  const router = useRouter();
+  const [error, setLoginError] = useState(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -17,12 +19,17 @@ export default function Login() {
   const sendCredentials = async (credentials) => {
     console.log('credentials', credentials);
     const res = await signIn('credentials', {
+      redirect: false,
       email: credentials.email,
       password: credentials.password,
-      callbackUrl: '/',
-      redirect: true,
+      callbackUrl: '/admin',
     });
-    if (res?.error) setLoginError('Login failed: ' + res.error);
+    if (res?.error) {
+      setLoginError(res.error);
+    } else {
+      setLoginError(null);
+    }
+    if (res.url) router.push(res.url);
   };
 
   return (
@@ -56,29 +63,21 @@ export default function Login() {
           >
             <Input.Password />
           </Form.Item>
-          {loginError && (
+          {error && (
             <Alert
               style={{ marginBottom: 24, alignSelf: 'stretch' }}
-              message={loginError}
+              message="Invalid credentials"
               type="error"
               showIcon
               closable
             />
           )}
 
-          <a>Forgot your password?</a>
-
           <Form.Item style={{ 'margin-bottom': '4px' }}>
             <Button type="primary" htmlType="submit">
               Login
             </Button>
           </Form.Item>
-
-          <div>
-            <p style={{ display: 'inline-block', color: '#72767D' }}>
-              Need an account?<a href="/register"> Register</a>
-            </p>
-          </div>
         </Form>
       </Card>
     </div>
