@@ -21,7 +21,7 @@ export default function admincreate() {
         
         fetch("/api/v1/news/create", {
             method: "POST",
-            body: JSON.stringify(obj),
+            body: JSON.stringify(values),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -38,9 +38,7 @@ export default function admincreate() {
             console.log("shits fucked up now")
           })
     }
-    const onFinish = (values) => {
-        console.log('Success:', values);
-    };
+    
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -68,13 +66,13 @@ export default function admincreate() {
         initialValues={{
             remember: true,
         }}
-        onFinish={onFinish}
+        onFinish={handleSubmit}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
         >
         <Form.Item
             label="Title"
-            name="title"
+            name="news_title"
             rules={[
             {
                 required: true,
@@ -84,7 +82,7 @@ export default function admincreate() {
         >
             <Input />
         </Form.Item>
-        <Form.Item label="Class" name="selectclass" rules={[
+        <Form.Item label="Class" name="class_id" rules={[
             {
                 required: true,
                 message: "choose",
@@ -106,7 +104,7 @@ export default function admincreate() {
         > <Input />
         </Form.Item> */}
 
-        <Form.Item label="School" name="selectschool" rules={[
+        <Form.Item label="School" name="school_id" rules={[
             {
                 required: true,
                 message: "choose",
@@ -130,7 +128,7 @@ export default function admincreate() {
         </Form.Item> */}
         <Form.Item
             label="Text"
-            name="textarea"
+            name="news_content"
             rules={[
             {
                 required: true,
@@ -141,7 +139,7 @@ export default function admincreate() {
             <Input.TextArea />
         </Form.Item>
         <Form.Item
-            name="upload"
+            name="news_images"
             label="Upload image (link)"
             valuePropName="fileList"
             getValueFromEvent={normFile}
@@ -155,7 +153,7 @@ export default function admincreate() {
             span: 16,
             }}
         >
-            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+            <Button type="primary" htmlType="submit" >
             Submit
             </Button>
         </Form.Item>
