@@ -20,6 +20,7 @@ function confirm(e) {
   // console.log(data);
   // if (error) return "An error has occurred.";
   // if (!data) return "Loading...";
+
 }
 
 function cancel(e) {
