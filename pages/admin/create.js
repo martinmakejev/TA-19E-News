@@ -179,7 +179,7 @@ export default function admincreate() {
             span: 16,
             }}
         >
-            <Button type="primary" htmlType="submit">
+            <Button href="/admin/" type="primary">
             Cancel
             </Button>
         </Form.Item>
