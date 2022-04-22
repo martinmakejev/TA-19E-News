@@ -115,6 +115,18 @@ export default function admincreate() {
                 <Select.Option value="1">1</Select.Option>
             </Select>
         </Form.Item>
+        <Form.Item
+            label="Author"
+            name="author_name"
+            rules={[
+            {
+                required: true,
+                message: 'Author',
+            },
+            ]}
+        >
+            <Input />
+        </Form.Item>
 
     {/* <Form.Item
             label="School"
@@ -140,10 +152,14 @@ export default function admincreate() {
             <Input.TextArea />
         </Form.Item>
         <Form.Item
+            label="Image"
             name="news_images"
-            label="Upload image (link)"
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
+            rules={[
+            {
+                required: true,
+                message: 'Image',
+            },
+            ]}
         >
             <Input />
         </Form.Item>
