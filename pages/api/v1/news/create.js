@@ -8,12 +8,12 @@ export default async function createNews(req, res) {
       let news = await prismaClient.news.create({
         data: {
           school_id: parseInt(req.body.school_id),
-          class_id: req.body.class_id,
+          class_id: parseInt(req.body.class_id),
           news_title: req.body.news_title,
-          author_name: req.body.author_name,
+          author_name: "req.body.author_name",
           news_content: req.body.news_content,
-          news_images: req.body.news_images,
-          release_date: req.body.release_date
+          news_images: "req.body.news_images",
+          release_date: "2022-03-29T12:06:11.719Z"
           
         },
       });

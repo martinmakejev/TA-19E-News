@@ -8,21 +8,21 @@ export default function admincreate() {
 
     const handleSubmit = (values) => {
         // valObj = JSON.parse(values)
-        const obj = {
-	"school_id": values.selectschool,
-	"class_id": 1,
-	"news_title": "uudis mis on uus aga see oli postmanis lisatrud",
-	"author_name": "Janeks",
-	"news_content": "kuidagi see töötab",
-	"news_images": "lol.png",
-	"release_date": "2022-03-29T12:06:11.719Z"
-}
+//       const obj = {
+//	"school_id": values.school_id,
+//	"class_id": values.class_id,
+//	"news_title": "uudis mis on uus aga see oli postmanis lisatrud",
+//	"author_name": "Janeks",
+//	"news_content": "kuidagi see töötab",
+//	"news_images": "lol.png",
+//	"release_date": "2022-03-29T12:06:11.719Z"
+//
 
         console.log("ass", values)
         
         fetch("/api/v1/news/create", {
             method: "POST",
-            body: JSON.stringify(obj),
+            body: JSON.stringify(values),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ export default function admincreate() {
         >
         <Form.Item
             label="Title"
-            name="title"
+            name="news_title"
             rules={[
             {
                 required: true,
@@ -83,7 +83,7 @@ export default function admincreate() {
         >
             <Input />
         </Form.Item>
-        <Form.Item label="Class" name="selectclass" rules={[
+        <Form.Item label="Class" name="class_id" rules={[
             {
                 required: true,
                 message: "choose",
@@ -105,7 +105,7 @@ export default function admincreate() {
         > <Input />
         </Form.Item> */}
 
-        <Form.Item label="School" name="selectschool" rules={[
+        <Form.Item label="School" name="school_id" rules={[
             {
                 required: true,
                 message: "choose",
@@ -129,7 +129,7 @@ export default function admincreate() {
         </Form.Item> */}
         <Form.Item
             label="Text"
-            name="textarea"
+            name="news_content"
             rules={[
             {
                 required: true,
@@ -140,7 +140,7 @@ export default function admincreate() {
             <Input.TextArea />
         </Form.Item>
         <Form.Item
-            name="upload"
+            name="news_images"
             label="Upload image (link)"
             valuePropName="fileList"
             getValueFromEvent={normFile}
