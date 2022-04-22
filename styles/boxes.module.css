@@ -1,0 +1,36 @@
+.container{
+    background-color: white;
+    margin: 0 auto;
+    width: 75%;
+}
+
+.mainNews {
+    background-color: white;
+    text-align: center;
+    /* border: 2px solid black;
+    border-radius: 5px; */
+    padding: 20px;
+}
+
+.news {
+    text-align: center;
+    /* border: 2px solid black;
+    border-radius: 5px; */
+    padding: 20px;
+}
+
+.news1 {
+    background-color: white;
+    text-align: center;
+    /* border: 2px solid black;
+    border-radius: 5px; */
+    padding: 20px;
+}
+
+.news2 {
+    background-color: white;
+    text-align: center;
+    /* border: 2px solid black;
+    border-radius: 5px; */
+    padding: 20px;
+}
